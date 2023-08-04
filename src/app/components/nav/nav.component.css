@@ -1,0 +1,23 @@
+*{
+  font-family: 'Courier New', Courier, monospace;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #cacaca;
+  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #30303b;
+}
+.nav-item{
+  background: #fcfcfc;
+  border-radius: 10%;
+  padding: 5px;
+
+
+
+}

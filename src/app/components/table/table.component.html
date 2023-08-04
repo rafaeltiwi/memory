@@ -1,0 +1,9 @@
+<button (click)="ramdomPlay()" > Mezclar </button>
+<div class="table-grid" >
+  <div  *ngFor="let card of cards" >
+   <app-card (click)="getCard(card.id)" [card]="card" ></app-card>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,11 @@
+<nav class="nav" >
+  <div [className]="turn ? 'nav-item' : 'background-color : red ' "  >
+    <p>{{players[0].name}} : {{players[0].score}} </p>
+  </div>
+   <div [className]="turn === false ? 'nav-item' : 'background-color : red ' "  >
+     <p>{{ players[1].name }} : {{ players[1].score }}</p>
+  </div>
+  <div>
+    <button  >Mezclar</button>
+  </div>
+</nav>
