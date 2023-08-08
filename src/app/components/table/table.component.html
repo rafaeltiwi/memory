@@ -1,6 +1,6 @@
 <div class="table-grid" >
   <div  *ngFor="let card of cards; index as i" >
-   <app-card  [card]="card " (click)="getCard(i)"  ></app-card>
+   <app-card  [card]="card " *ngIf="!card.match"  (click)="getCard(i)"  ></app-card>
   </div>
 </div>
 

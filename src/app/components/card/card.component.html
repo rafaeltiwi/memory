@@ -1,5 +1,6 @@
 
-<img *ngIf="card.show" [src]="card.img"   alt="">
+<img *ngIf="card.show && !card.match " [src]="card.img"   alt="">
 <img *ngIf="!card.show" src="https://placehold.co/600x600?text=Oculto" alt="">
+<div *ngIf="!card.show && card.match"  ></div>
 
 

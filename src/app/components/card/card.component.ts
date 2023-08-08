@@ -13,7 +13,8 @@ export class CardComponent  {
   @Input() card : card = {
     id:0,
     img:'',
-    show:false
+    show:false,
+    match:false
 
   };
 

@@ -13,8 +13,8 @@ export class TableComponent {
     this.ramdomPlay();
   }
 
-
   firstValue = 0;
+  selectedCards: number[] = [];
   secondValue = 0;
   cond = false;
   turn = true;
@@ -28,7 +28,7 @@ export class TableComponent {
       score: 0,
     },
   ];
-//passing the data to nav
+  //passing the data to nav
   @Output() turnChange: EventEmitter<boolean> = new EventEmitter();
   @Output() playersChange: EventEmitter<players[]> = new EventEmitter();
 
@@ -36,42 +36,47 @@ export class TableComponent {
   cards = [...cards];
 
   //get de id of teh card
-  getCard(index: number  ) {
+  getCard(index: number) {
     // algorimt to just compare two cards
     if (this.cond === false) {
+      //getting the first card
       this.firstValue = this.cards[index].id;
       this.cond = true;
-      this.cards[index].show = true
-      setTimeout(() => {
-       this.cards[index].show = false
+      this.selectedCards.push(index);
 
-      }, 1000);
-
-
+      //showing the first card
+      this.cards[index].show = true;
     } else {
+      //getting the second card
+      this.secondValue = this.cards[index].id;
 
-      this.cards[index].show = true
-      setTimeout(() => {
-        this.cards[index].show = false
-
-       }, 1000);
-
-      this.secondValue =  this.cards[index].id;
-      this.compareValues(this.firstValue, this.secondValue);
       this.cond = false;
+      this.selectedCards.push(index);
+
+      //showing teh second card
+      this.cards[index].show = true;
+    }
+    if (this.selectedCards.length == 2) {
+
+      setTimeout(() => {
+        this.cards[this.selectedCards[0]].show = false;
+        this.cards[this.selectedCards[1]].show = false;
+        this.selectedCards = []
+        this.compareValues(this.firstValue, this.secondValue);
+      }, 1000);
 
     }
   }
 
-
-
-
   //compare de values (id) of two cards
-  compareValues(a: number, b : number) {
+  compareValues(a: number, b: number) {
     if (a === b) {
       if (this.turn) {
         this.players[0].score++;
+        this.matchedCard(a)
+
       } else {
+        this.matchedCard(a)
         this.players[1].score++;
       }
 
@@ -85,6 +90,13 @@ export class TableComponent {
     }
   }
 
+  //turning the matched card into none
+
+  matchedCard(a : number){
+    this.cards.filter(e=>e.id == a).forEach( e  => e.match = true )
+
+  }
+
   // put the cards in a ramdom position...
   ramdomPlay() {
     for (let i = this.cards.length - 1; i > 0; i--) {
@@ -92,6 +104,4 @@ export class TableComponent {
       [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
     }
   }
-
-
 }
