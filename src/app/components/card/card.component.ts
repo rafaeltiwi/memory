@@ -1,5 +1,5 @@
 import { card } from './../../models/card.model';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -7,10 +7,26 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent {
-
-  @Input() card : card = { id: 0 ,img: "" };
+export class CardComponent  {
 
 
+  @Input() card : card = {
+    id:0,
+    img:'',
+    show:false
 
-}
+  };
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+

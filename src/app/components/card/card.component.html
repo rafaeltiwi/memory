@@ -1,2 +1,5 @@
-<img [src]="card.img"   alt="">
-<p>{{card.id}}</p>
+
+<img *ngIf="card.show" [src]="card.img"   alt="">
+<img *ngIf="!card.show" src="https://placehold.co/600x600?text=Oculto" alt="">
+
+
